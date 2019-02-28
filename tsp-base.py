@@ -162,15 +162,18 @@ def genetic_algorithm_tsp(cities, pop_size, elite_size, mutation_rate, generatio
 
     # print("Final best route: " + str(sorted(population, key=operator.attrgetter('distance'))[0].distance))
     best_route = sorted(population, key=operator.attrgetter('distance'))[0].route
+    plt.subplot(1, 2, 1)
+    plt.title("Distance over Time")
     plt.plot(progress)
     plt.ylabel('Distance')
     plt.xlabel('Generation')
-    plt.show()
     the_route = []
     for i in range(len(population[0].route)):
         the_route.append([population[0].route[i].x, population[0].route[i].y])
     the_route.append([population[0].route[0].x, population[0].route[0].y])
     np_route = np.array(the_route)
+    plt.subplot(1, 2, 2)
+    plt.title("Final Route")
     plt.plot(*np_route.T, alpha=0.5)
     plt.scatter(np_route[:, 0], np_route[:, 1], color='b')
     plt.grid(color='b', alpha=0.5, linestyle='dashed', linewidth=0.5)
@@ -185,4 +188,4 @@ cityList = [City(x=1, y=1), City(x=1, y=5), City(x=1, y=10), City(x=2, y=3), Cit
             City(x=8, y=2), City(x=8, y=7), City(x=10, y=4)]
 
 
-print(genetic_algorithm_tsp(cityList, 200, 40, 0.01, 100))
+print(genetic_algorithm_tsp(cityList, 200, 40, 0.01, 300))

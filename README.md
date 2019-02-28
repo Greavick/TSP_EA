@@ -1,2 +1,2 @@
 # TSP_EA
-Travelling Salesman Problem via Evolutionary Algorithms
+Travelling Salesman Problem solution via Evolutionary Algorithms
